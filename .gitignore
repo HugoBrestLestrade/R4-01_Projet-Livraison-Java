@@ -1,0 +1,100 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Environment-dependent path to Maven home directory
+/mavenHomeManager.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/Commandes/.idea/encodings.xml
+/Menu/.idea/encodings.xml
+/Plats-Utilisateurs/.idea/encodings.xml
+*/.idea/*
+*/.mvn/*
+.idea/*
+
+# =========================
+
+# OS / Général
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# IDE (IntelliJ, VS Code, etc.)
+
+# =========================
+
+.idea/
+*.iml
+.vscode/
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# Java / Maven
+
+# =========================
+
+target/
+*.class
+
+# Maven Wrapper (optionnel, tu peux garder si tu veux)
+
+# mvnw
+
+# mvnw.cmd
+
+# .mvn/
+
+# =========================
+
+# PHP / Composer
+
+# =========================
+
+vendor/
+composer.lock
+
+# =========================
+
+# Fichiers spécifiques générés (Composer)
+
+# =========================
+
+vendor/composer/autoload_*.php
+vendor/composer/ClassLoader.php
+vendor/composer/installed.*
+vendor/composer/InstalledVersions.php
+
+# =========================
+
+# Config locales / secrets
+
+# =========================
+
+.env
+.env.local
+.env.*.local
+
+# =========================
+
+# Autres
+
+# =========================
+
+node_modules/
+dist/
+build/
