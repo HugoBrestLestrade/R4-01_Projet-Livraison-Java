@@ -9,12 +9,24 @@ import java.util.ArrayList;
  */
 public class PlatsService {
 
+    /**
+     * Objet permettant d'accéder au dépôt où sont stockées les informations sur les plats
+     */
     protected PlatsRepositoryInterface platsRepo;
 
+
+    /**
+     * Constructeur permettant d'injecter l'accès aux données
+     * @param platsRepo objet implémentant l'interface d'accès aux données
+     */
     public PlatsService(PlatsRepositoryInterface platsRepo) {
         this.platsRepo = platsRepo;
     }
 
+    /**
+     * Méthode retournant les informations sur les plats au format JSON
+     * @return une chaîne de caractères contenant les informations au format JSON
+     */
     public String getAllPlatsJSON() {
         ArrayList<Plats> allPlats = platsRepo.getAllPlats();
         String result = null;
@@ -26,6 +38,11 @@ public class PlatsService {
         return result;
     }
 
+    /**
+     * Méthode retournant au format JSON les informations sur un plat recherché
+     * @param id l'identifiant du plat recherché
+     * @return une chaîne de caractères contenant les informations au format JSON
+     */
     public String getPlatJSON(int id) {
         String result = null;
         Plats myPlat = platsRepo.getPlat(id);

@@ -9,13 +9,25 @@ import java.util.ArrayList;
  */
 public class PlatsRepositoryMariadb implements PlatsRepositoryInterface, Closeable {
 
+    /**
+     * Accès à la base de données (session)
+     */
     protected Connection dbConnection;
 
+    /**
+     * Constructeur de la classe
+     * @param infoConnection chaîne de caractères avec les informations de connexion
+     * @param user chaîne de caractères contenant l'identifiant de connexion à la base de données
+     * @param pwd chaîne de caractères contenant le mot de passe à utiliser
+     */
     public PlatsRepositoryMariadb(String infoConnection, String user, String pwd) throws java.sql.SQLException, java.lang.ClassNotFoundException {
         Class.forName("org.mariadb.jdbc.Driver");
         dbConnection = DriverManager.getConnection(infoConnection, user, pwd);
     }
 
+    /**
+     * Méthode fermant le dépôt où sont stockées les informations sur les plats
+     */
     @Override
     public void close() {
         try {
@@ -25,6 +37,11 @@ public class PlatsRepositoryMariadb implements PlatsRepositoryInterface, Closeab
         }
     }
 
+    /**
+     * Méthode retournant le plat dont l'identifiant est passé en paramètre
+     * @param id identifiant du plat recherché
+     * @return un objet Plats représentant le plat recherché
+     */
     @Override
     public Plats getPlat(int id) {
         Plats selectedPlat = null;
@@ -47,6 +64,10 @@ public class PlatsRepositoryMariadb implements PlatsRepositoryInterface, Closeab
         return selectedPlat;
     }
 
+    /**
+     * Méthode retournant la liste des plats
+     * @return une liste d'objets plats
+     */
     @Override
     public ArrayList<Plats> getAllPlats() {
         ArrayList<Plats> listPlats;

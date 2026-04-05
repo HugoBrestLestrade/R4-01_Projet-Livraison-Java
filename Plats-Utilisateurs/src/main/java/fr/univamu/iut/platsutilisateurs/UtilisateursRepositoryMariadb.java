@@ -9,13 +9,25 @@ import java.util.ArrayList;
  */
 public class UtilisateursRepositoryMariadb implements UtilisateursRepositoryInterface, Closeable {
 
+    /**
+     * Accès à la base de données
+     */
     protected Connection dbConnection;
 
+    /**
+     * Constructeur de la classe
+     * @param infoConnection chaîne de caractères avec les informations de connexion
+     * @param user chaîne de caractères contenant l'identifiant de connexion à la base de données
+     * @param pwd chaîne de caractères contenant le mot de passe à utiliser
+     */
     public UtilisateursRepositoryMariadb(String infoConnection, String user, String pwd) throws java.sql.SQLException, java.lang.ClassNotFoundException {
         Class.forName("org.mariadb.jdbc.Driver");
         dbConnection = DriverManager.getConnection(infoConnection, user, pwd);
     }
 
+    /**
+     * Méthode fermant le dépôt où sont stockées les informations sur les utilisateurs
+     */
     @Override
     public void close() {
         try {
@@ -25,6 +37,11 @@ public class UtilisateursRepositoryMariadb implements UtilisateursRepositoryInte
         }
     }
 
+    /**
+     * Méthode retournant l'utilisateur dont l'identifiant est passé en paramètre
+     * @param id identifiant de l'utilisateur recherché
+     * @return un objet Utilisateurs représentant l'utilisateur recherché
+     */
     @Override
     public Utilisateurs getUtilisateur(int id) {
         Utilisateurs selectedUtilisateur = null;
@@ -49,6 +66,10 @@ public class UtilisateursRepositoryMariadb implements UtilisateursRepositoryInte
         return selectedUtilisateur;
     }
 
+    /**
+     * Méthode retournant la liste des utilisateurs
+     * @return une liste d'objets utilisateurs
+     */
     @Override
     public ArrayList<Utilisateurs> getAllUtilisateurs() {
         ArrayList<Utilisateurs> listUtilisateurs;

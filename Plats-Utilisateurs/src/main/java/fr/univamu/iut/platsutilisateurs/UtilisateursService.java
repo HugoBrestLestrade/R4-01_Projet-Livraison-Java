@@ -9,12 +9,23 @@ import java.util.ArrayList;
  */
 public class UtilisateursService {
 
+    /**
+     * Objet permettant d'accéder au dépôt où sont stockées les informations sur les utilisateurs
+     */
     protected UtilisateursRepositoryInterface utilisateursRepo;
 
+    /**
+     * Constructeur permettant d'injecter l'accès aux données
+     * @param utilisateursRepo objet implémentant l'interface d'accès aux données
+     */
     public UtilisateursService(UtilisateursRepositoryInterface utilisateursRepo) {
         this.utilisateursRepo = utilisateursRepo;
     }
 
+    /**
+     * Méthode retournant les informations sur les utilisateurs au format JSON
+     * @return une chaîne de caractères contenant les informations au format JSON
+     */
     public String getAllUtilisateursJSON() {
         ArrayList<Utilisateurs> allUtilisateurs = utilisateursRepo.getAllUtilisateurs();
         String result = null;
@@ -26,6 +37,11 @@ public class UtilisateursService {
         return result;
     }
 
+    /**
+     * Méthode retournant au format JSON les informations sur un utilisateur recherché
+     * @param id l'identifiant de l'utilisateur recherché
+     * @return une chaîne de caractères contenant les informations au format JSON
+     */
     public String getUtilisateurJSON(int id) {
         String result = null;
         Utilisateurs myUtilisateur = utilisateursRepo.getUtilisateur(id);
