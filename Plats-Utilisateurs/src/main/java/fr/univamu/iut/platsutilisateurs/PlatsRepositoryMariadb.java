@@ -91,4 +91,60 @@ public class PlatsRepositoryMariadb implements PlatsRepositoryInterface, Closeab
         }
         return listPlats;
     }
+
+    /**
+     * Méthode permettant d'ajouter un nouveau plat
+     */
+    @Override
+    public boolean ajouterPlat(Plats p) {
+        String query = "INSERT INTO plats (nom, description, prix) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setString(1, p.getNom());
+            ps.setString(2, p.getDescription());
+            ps.setDouble(3, p.getPrix());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Méthode permettant de mettre à jour un plat
+     */
+    @Override
+    public boolean updatePlat(int id, Plats p) {
+        String query = "UPDATE plats SET nom=?, description=?, prix=? WHERE id=?";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setString(1, p.getNom());
+            ps.setString(2, p.getDescription());
+            ps.setDouble(3, p.getPrix());
+            ps.setInt(4, id);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Méthode permettant de supprimer un plat
+     */
+    @Override
+    public boolean deletePlat(int id) {
+        String query = "DELETE FROM plats WHERE id=?";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
 }

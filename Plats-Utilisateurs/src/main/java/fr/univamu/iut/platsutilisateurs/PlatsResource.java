@@ -30,13 +30,37 @@ public class PlatsResource {
         this.service = new PlatsService(repo);
     }
 
-    /**
-     * Endpoint permettant de publier tous les plats enregistrés
-     * @return la liste des plats (avec leurs informations) au format JSON
-     */
     @GET
     @Produces("application/json")
     public String getAllPlats() {
         return service.getAllPlatsJSON();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces("application/json")
+    public String getPlat(@PathParam("id") int id) {
+        return service.getPlatJSON(id);
+    }
+
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    public String createPlat(String platJson) {
+        return service.createPlat(platJson);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public String updatePlat(@PathParam("id") int id, String platJson) {
+        return service.updatePlat(id, platJson);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deletePlat(@PathParam("id") int id) {
+        service.deletePlat(id);
     }
 }
