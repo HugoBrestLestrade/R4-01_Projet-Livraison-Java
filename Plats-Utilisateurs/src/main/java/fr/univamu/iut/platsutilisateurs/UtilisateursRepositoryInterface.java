@@ -23,4 +23,26 @@ public interface UtilisateursRepositoryInterface {
      * @return une liste d'objets utilisateurs
      */
     public ArrayList<Utilisateurs> getAllUtilisateurs();
+
+    /**
+     * Méthode permettant d'ajouter un nouvel utilisateur
+     * @param u l'objet Utilisateurs à ajouter
+     * @return true si l'ajout a réussi, false sinon
+     */
+    public boolean ajouterUtilisateur(Utilisateurs u);
+
+    /**
+     * Méthode permettant de mettre à jour un utilisateur existant
+     * @param id identifiant de l'utilisateur à modifier
+     * @param u les nouvelles informations de l'utilisateur
+     * @return true si la modification a réussi, false sinon
+     */
+    public boolean updateUtilisateur(int id, Utilisateurs u);
+
+    /**
+     * Méthode permettant de supprimer un utilisateur
+     * @param id identifiant de l'utilisateur à supprimer
+     * @return true si la suppression a réussi, false sinon
+     */
+    public boolean deleteUtilisateur(int id);
 }

@@ -95,4 +95,64 @@ public class UtilisateursRepositoryMariadb implements UtilisateursRepositoryInte
         }
         return listUtilisateurs;
     }
+
+    /**
+     * Méthode permettant d'ajouter un nouvel utilisateur (CREATE)
+     */
+    @Override
+    public boolean ajouterUtilisateur(Utilisateurs u) {
+        String query = "INSERT INTO utilisateurs (nom, prenom, adresse, email, mdp) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getAdresse());
+            ps.setString(4, u.getEmail());
+            ps.setString(5, u.getMdp());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Méthode permettant de mettre à jour un utilisateur (UPDATE)
+     */
+    @Override
+    public boolean updateUtilisateur(int id, Utilisateurs u) {
+        String query = "UPDATE utilisateurs SET nom=?, prenom=?, adresse=?, email=?, mdp=? WHERE id=?";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getAdresse());
+            ps.setString(4, u.getEmail());
+            ps.setString(5, u.getMdp());
+            ps.setInt(6, id);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Méthode permettant de supprimer un utilisateur (DELETE)
+     */
+    @Override
+    public boolean deleteUtilisateur(int id) {
+        String query = "DELETE FROM utilisateurs WHERE id=?";
+        try (PreparedStatement ps = dbConnection.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
 }
