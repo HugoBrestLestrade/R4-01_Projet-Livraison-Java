@@ -67,6 +67,37 @@
                 8
             ],
             "id": 11
+        },
+        {
+            "nom": "Menu simple",
+            "createur": "Romeo Rumau",
+            "dateCreation": "2026-04-09",
+            "platsIds": [
+                6
+            ],
+            "id": 12
+        },
+        {
+            "nom": "Menu 01",
+            "createur": "Dubois Lucie",
+            "dateCreation": "2026-04-09",
+            "platsIds": [
+                1,
+                2,
+                7
+            ],
+            "id": 13
+        },
+        {
+            "nom": "Menu 02",
+            "createur": "Paul Epson",
+            "dateCreation": "2026-04-09",
+            "platsIds": [
+                3,
+                5,
+                7
+            ],
+            "id": 14
         }
     ]
 }
