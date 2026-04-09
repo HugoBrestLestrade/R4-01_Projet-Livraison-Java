@@ -1,0 +1,38 @@
+{
+  "commandes": [
+    {
+      "id": 1,
+      "utilisateurId": 1,
+      "lignes": [
+        { "menuId": 1, "quantite": 2 }
+      ],
+      "dateCommande": "2026-04-05",
+      "adresseLivraison": "12 rue des Oliviers, Aix-en-Provence",
+      "dateLivraison": "2026-04-10",
+      "prixTotal": 55.00
+    },
+    {
+      "id": 2,
+      "utilisateurId": 3,
+      "lignes": [
+        { "menuId": 2, "quantite": 1 },
+        { "menuId": 3, "quantite": 1 }
+      ],
+      "dateCommande": "2026-04-06",
+      "adresseLivraison": "8 avenue Mirabeau, Aix-en-Provence",
+      "dateLivraison": "2026-04-11",
+      "prixTotal": 62.50
+    },
+    {
+      "id": 3,
+      "utilisateurId": 2,
+      "lignes": [
+        { "menuId": 4, "quantite": 3 }
+      ],
+      "dateCommande": "2026-04-07",
+      "adresseLivraison": "3 chemin du Moulin, Marseille",
+      "dateLivraison": "2026-04-12",
+      "prixTotal": 105.00
+    }
+  ]
+}

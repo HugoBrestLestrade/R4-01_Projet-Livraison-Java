@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Outfit:wght@300;400;500&display=swap');
+
+/* =============================================
+   VARIABLES – Palette pastel / lin / biscuit
+   ============================================= */
+:root {
+    --lin:           #fdfaf7;
+    --lin-fonce:     #f4ede3;
+    --bordure:       #ede8e0;
+    --texte:         #2d2926;
+    --texte-doux:    #8c7e70;
+    --accent:        #b07a4e;
+    --accent-pale:   #f0e9e1;
+    --blanc:         #ffffff;
+
+    --font-titre:    'Cormorant Garamond', Georgia, serif;
+    --font-corps:    'Outfit', Arial, sans-serif;
+
+    --radius:        14px;
+    --ombre:         0 2px 18px rgba(45, 41, 38, 0.06);
+    --transition:    0.2s ease;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-corps);
+    font-weight: 400;
+    background-color: var(--lin);
+    color: var(--texte);
+    line-height: 1.6;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Permet au footer de coller en bas */
+main { flex: 1; }
+
+a { text-decoration: none; color: inherit; }
+
+/* =============================================
+   NAVBAR — translucide, sticky
+   ============================================= */
+.navbar {
+    background-color: rgba(253, 250, 247, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--bordure);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar__logo {
+    font-family: var(--font-titre);
+    font-style: italic;
+    font-size: 1.45rem;
+    color: var(--texte);
+    letter-spacing: 0.02em;
+}
+
+.navbar__links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+}
+
+.navbar__links a {
+    color: var(--texte-doux);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.navbar__links a:hover {
+    background-color: var(--lin-fonce);
+    color: var(--texte);
+}
+
+.navbar__links a.active {
+    background-color: var(--accent-pale);
+    color: var(--texte);
+    font-weight: 500;
+}
+
+/* =============================================
+   HERO — image plein écran avec overlay
+   ============================================= */
+.hero {
+    position: relative;
+    height: 90vh;           /* prend l'écran comme sweetgreen */
+    min-height: 480px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;  /* texte en bas comme sweetgreen */
+}
+
+.hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Dégradé sombre vers le bas pour lisibilité du texte */
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to top,
+            rgba(30, 24, 18, 0.70) 0%,
+            rgba(30, 24, 18, 0.15) 55%,
+            transparent 100%
+    );
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 3rem;
+    width: 100%;
+    max-width: 700px;
+}
+
+.hero__titre {
+    font-family: var(--font-titre);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: #fdfaf7;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.hero__sous-titre {
+    font-size: 1rem;
+    color: rgba(253, 250, 247, 0.75);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.hero__btn {
+    display: inline-block;
+    background-color: var(--lin);
+    color: var(--texte);
+    padding: 0.65rem 1.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: var(--transition);
+}
+
+
+
+.hero__btn:hover {
+    background-color: var(--blanc);
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   LAYOUT
+   ============================================= */
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+
+/* =============================================
+   GRILLE DE CARDS
+   ============================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.1rem;
+}
+
+.card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    box-shadow: var(--ombre);
+    border: 1px solid var(--bordure);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(45, 41, 38, 0.10);
+}
+
+.card__tag {
+    display: inline-block;
+    background: var(--accent-pale);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    margin-bottom: 0.7rem;
+}
+
+.card__nom {
+    font-family: var(--font-titre);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--texte);
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+}
+
+.card__description {
+    font-size: 0.83rem;
+    color: var(--texte-doux);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.55;
+}
+
+.card__prix {
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.card__meta {
+    font-size: 0.78rem;
+    color: var(--texte-doux);
+    font-weight: 300;
+    margin-top: 0.4rem;
+    line-height: 1.6;
+}
+
+/* =============================================
+   FORMULAIRE
+   ============================================= */
+.form-section {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--ombre);
+    border: 1px solid var(--bordure);
+    margin-bottom: 2.5rem;
+}
+
+.form-section h2 {
+    font-family: var(--font-titre);
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--texte);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--texte);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    font-size: 0.93rem;
+    font-family: var(--font-corps);
+    font-weight: 300;
+    background: var(--lin);
+    color: var(--texte);
+    transition: border-color var(--transition), background var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--blanc);
+}
+
+.checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 0.45rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--texte);
+    background: var(--lin);
+    transition: var(--transition);
+}
+
+.checkbox-item:hover {
+    border-color: var(--accent);
+    background: var(--accent-pale);
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    padding: 0;
+    border: none;
+    background: none;
+    appearance: auto;
+    -webkit-appearance: auto;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 2rem;
+    background-color: var(--texte);
+    color: var(--lin);
+    border: none;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-family: var(--font-corps);
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   ALERTES
+   ============================================= */
+.alert {
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    font-size: 0.87rem;
+    font-weight: 400;
+}
+
+.alert--succes {
+    background: #f0f7ee;
+    color: #3a6b35;
+    border: 1px solid #b5d6af;
+}
+
+.alert--erreur {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+/* =============================================
+   TITRE DE SECTION
+   ============================================= */
+.section-title {
+    font-family: var(--font-titre);
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--texte);
+    margin-bottom: 1.2rem;
+}
+
+/* =============================================
+   ÉTAT VIDE
+   ============================================= */
+.empty-state {
+    text-align: center;
+    color: var(--texte-doux);
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 3rem 0;
+}
+
+/* =============================================
+   FOOTER — collé en bas grâce au flex sur body
+   ============================================= */
+footer {
+    background-color: var(--texte);
+    color: rgba(253, 250, 247, 0.4);
+    text-align: center;
+    padding: 1.4rem;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+
+
+/* =============================================
+   ANIMATION FADE-IN UP — section plats
+   ============================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container#plats {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-play-state: paused;
+}
+
+.container#plats.visible {
+    animation-play-state: running;
+}
