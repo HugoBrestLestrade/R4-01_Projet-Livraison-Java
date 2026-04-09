@@ -17,10 +17,9 @@
     </ul>
 </nav>
 
-<main> <section class="hero">
-        <img class="hero__img"
-             src="assets/images/commandes-hero.jpg"
-             alt="Vos commandes">
+<main>
+    <section class="hero">
+        <img class="hero__img" src="assets/images/commandes-hero.jpg" alt="Vos commandes">
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <h1 class="hero__titre">Vos commandes</h1>
@@ -36,7 +35,6 @@
             <?php if (!empty($succes)): ?>
                 <div class="alert alert--succes"><?= htmlspecialchars($succes) ?></div>
             <?php endif; ?>
-
             <?php if (!empty($erreur)): ?>
                 <div class="alert alert--erreur"><?= htmlspecialchars($erreur) ?></div>
             <?php endif; ?>
@@ -44,7 +42,8 @@
             <form action="index.php?page=commandes" method="POST">
                 <div class="form-group">
                     <label for="utilisateurId">Votre identifiant abonné</label>
-                    <input type="number" id="utilisateurId" name="utilisateurId" placeholder="ex: 1" min="1" required>
+                    <input type="number" id="utilisateurId" name="utilisateurId"
+                           placeholder="ex: 1" min="1" required>
                 </div>
 
                 <div class="form-group">
@@ -53,7 +52,8 @@
                         <option value="">-- Choisir un menu --</option>
                         <?php foreach ($menus as $menu): ?>
                             <option value="<?= $menu->id ?>">
-                                <?= htmlspecialchars($menu->nom) ?> (par <?= htmlspecialchars($menu->createur) ?>)
+                                <?= htmlspecialchars($menu->nom) ?>
+                                (par <?= htmlspecialchars($menu->createur) ?>)
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -61,17 +61,20 @@
 
                 <div class="form-group">
                     <label for="quantite">Quantité</label>
-                    <input type="number" id="quantite" name="quantite" value="1" min="1" max="20" required>
+                    <input type="number" id="quantite" name="quantite"
+                           value="1" min="1" max="20" required>
                 </div>
 
                 <div class="form-group">
                     <label for="adresseLivraison">Adresse de livraison</label>
-                    <input type="text" id="adresseLivraison" name="adresseLivraison" placeholder="ex: 12 rue des Oliviers, Aix-en-Provence" required>
+                    <input type="text" id="adresseLivraison" name="adresseLivraison"
+                           placeholder="ex: 12 rue des Oliviers, Aix-en-Provence" required>
                 </div>
 
                 <div class="form-group">
                     <label for="dateLivraison">Date de livraison souhaitée</label>
-                    <input type="date" id="dateLivraison" name="dateLivraison" min="<?= date('Y-m-d') ?>" required>
+                    <input type="date" id="dateLivraison" name="dateLivraison"
+                           min="<?= date('Y-m-d') ?>" required>
                 </div>
 
                 <button type="submit" class="btn">Commander →</button>
@@ -81,9 +84,7 @@
         <h2 class="section-title">Historique des commandes</h2>
 
         <?php if (empty($commandes)): ?>
-            <p style="text-align:center; color: var(--texte-gris); font-family: Arial, sans-serif;">
-                Aucune commande enregistrée.
-            </p>
+            <p class="empty-state">Aucune commande enregistrée.</p>
         <?php else: ?>
             <div class="grid">
                 <?php foreach ($commandes as $commande): ?>
@@ -91,9 +92,15 @@
                         <span class="card__tag">Commande #<?= $commande->id ?></span>
                         <h2 class="card__nom">Abonné #<?= $commande->utilisateurId ?></h2>
                         <p class="card__meta">Passée le <?= htmlspecialchars($commande->dateCommande) ?></p>
-                        <p class="card__description">
-                            <?php foreach ($commande->lignes as $ligne): ?>
-                                Menu #<?= $ligne['menuId'] ?> × <?= $ligne['quantite'] ?><br>
+                        <p class="card__description" style="margin-top: 0.5rem;">
+                            <?php foreach ($commande->lignes as $ligne):
+                                // Trouver le nom du menu
+                                $nomMenu = 'Menu #' . $ligne['menuId'];
+                                foreach ($menus as $m) {
+                                    if ($m->id === $ligne['menuId']) { $nomMenu = $m->nom; break; }
+                                }
+                                ?>
+                                <?= htmlspecialchars($nomMenu) ?> × <?= $ligne['quantite'] ?><br>
                             <?php endforeach; ?>
                         </p>
                         <p class="card__meta">
@@ -110,8 +117,9 @@
             </div>
         <?php endif; ?>
     </div>
+</main>
 
-</main> <footer>
+<footer>
     &copy; <?= date('Y') ?> MenuApp — Projet Microservices IUT Aix-Marseille
 </footer>
 

@@ -1,31 +1,26 @@
 <?php
-require_once __DIR__ . '/ApiClient.php';
 require_once __DIR__ . '/../model/Commande.php';
 
-/**
- * Service pour le composant "Commandes" (port 3005).
- */
 class CommandeService {
 
-    private string $baseUrl = 'http://localhost:3005';
+    private string $jsonPath;
 
-    /**
-     * Retourne toutes les commandes.
-     *
-     * @return Commande[]
-     */
-    public function getAllCommandes(): array {
-        $data = ApiClient::get($this->baseUrl . '/commandes');
-        return array_map(fn($item) => Commande::fromArray($item), $data);
+    public function __construct() {
+        $this->jsonPath = __DIR__ . '/../../json/commandes.json';
     }
 
-    /**
-     * Crée une nouvelle commande.
-     *
-     * @param array $commandeData
-     * @return array Réponse de l'API
-     */
+    public function getAllCommandes(): array {
+        if (!file_exists($this->jsonPath)) return [];
+        $local = json_decode(file_get_contents($this->jsonPath), true) ?? [];
+        return array_map(fn($item) => Commande::fromArray($item), $local['commandes'] ?? []);
+    }
+
     public function createCommande(array $commandeData): array {
-        return ApiClient::post($this->baseUrl . '/commandes', $commandeData);
+        $local = json_decode(file_get_contents($this->jsonPath), true) ?? ['commandes' => []];
+        $ids = array_column($local['commandes'], 'id');
+        $commandeData['id'] = $ids ? max($ids) + 1 : 1;
+        $local['commandes'][] = $commandeData;
+        file_put_contents($this->jsonPath, json_encode($local, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        return $commandeData;
     }
 }

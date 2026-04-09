@@ -1,42 +1,33 @@
 <?php
-require_once __DIR__ . '/ApiClient.php';
 require_once __DIR__ . '/../model/Menu.php';
 
-/**
- * Service pour le composant "Menus" (port 3004).
- */
 class MenuService {
 
-    private string $baseUrl = 'http://localhost:3004';
+    private string $jsonPath;
 
-    /**
-     * Retourne tous les menus disponibles.
-     *
-     * @return Menu[]
-     */
+    public function __construct() {
+        $this->jsonPath = __DIR__ . '/../../json/menus.json';
+    }
+
     public function getAllMenus(): array {
-        $data = ApiClient::get($this->baseUrl . '/menus');
-        return array_map(fn($item) => Menu::fromArray($item), $data);
+        if (!file_exists($this->jsonPath)) return [];
+        $local = json_decode(file_get_contents($this->jsonPath), true) ?? [];
+        return array_map(fn($item) => Menu::fromArray($item), $local['menus'] ?? []);
     }
 
-    /**
-     * Retourne un menu par son id.
-     *
-     * @param int $id
-     * @return Menu|null
-     */
     public function getMenuById(int $id): ?Menu {
-        $data = ApiClient::get($this->baseUrl . '/menus/' . $id);
-        return empty($data) ? null : Menu::fromArray($data);
+        foreach ($this->getAllMenus() as $menu) {
+            if ($menu->id === $id) return $menu;
+        }
+        return null;
     }
 
-    /**
-     * Crée un nouveau menu via POST.
-     *
-     * @param array $menuData  Données brutes du menu
-     * @return array Réponse de l'API
-     */
     public function createMenu(array $menuData): array {
-        return ApiClient::post($this->baseUrl . '/menus', $menuData);
+        $local = json_decode(file_get_contents($this->jsonPath), true) ?? ['menus' => []];
+        $ids = array_column($local['menus'], 'id');
+        $menuData['id'] = $ids ? max($ids) + 1 : 1;
+        $local['menus'][] = $menuData;
+        file_put_contents($this->jsonPath, json_encode($local, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        return $menuData;
     }
 }

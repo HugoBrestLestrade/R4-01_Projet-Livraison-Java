@@ -1,32 +1,72 @@
 {
-  "menus": [
-    {
-      "id": 1,
-      "nom": "Menu Méditerranéen",
-      "createur": "Alice Martin",
-      "dateCreation": "2026-04-01",
-      "platsIds": [1, 5, 6]
-    },
-    {
-      "id": 2,
-      "nom": "Menu Terroir",
-      "createur": "Bob Durand",
-      "dateCreation": "2026-04-02",
-      "platsIds": [2, 3, 7]
-    },
-    {
-      "id": 3,
-      "nom": "Menu Végétarien",
-      "createur": "Clara Petit",
-      "dateCreation": "2026-04-03",
-      "platsIds": [4, 5, 6]
-    },
-    {
-      "id": 4,
-      "nom": "Menu Gourmand",
-      "createur": "David Moreau",
-      "dateCreation": "2026-04-04",
-      "platsIds": [7, 8, 3]
-    }
-  ]
+    "menus": [
+        {
+            "id": 1,
+            "nom": "Menu Méditerranéen",
+            "createur": "Alice Martin",
+            "dateCreation": "2026-04-01",
+            "platsIds": [
+                1,
+                5,
+                6
+            ]
+        },
+        {
+            "id": 2,
+            "nom": "Menu Terroir",
+            "createur": "Bob Durand",
+            "dateCreation": "2026-04-02",
+            "platsIds": [
+                2,
+                3,
+                7
+            ]
+        },
+        {
+            "id": 3,
+            "nom": "Menu Végétarien",
+            "createur": "Clara Petit",
+            "dateCreation": "2026-04-03",
+            "platsIds": [
+                4,
+                5,
+                6
+            ]
+        },
+        {
+            "id": 4,
+            "nom": "Menu Gourmand",
+            "createur": "David Moreau",
+            "dateCreation": "2026-04-04",
+            "platsIds": [
+                7,
+                8,
+                3
+            ]
+        },
+        {
+            "nom": "Menu Tunisien",
+            "createur": "Sinda Amara",
+            "dateCreation": "2026-04-09",
+            "platsIds": [
+                1,
+                8
+            ],
+            "id": 10
+        },
+        {
+            "nom": "menu Complet",
+            "createur": "Jean Dupont",
+            "dateCreation": "2026-04-09",
+            "platsIds": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8
+            ],
+            "id": 11
+        }
+    ]
 }
