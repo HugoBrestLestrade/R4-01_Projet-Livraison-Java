@@ -1,2 +1,12 @@
 {
+  "name": "iut/menuapp-ihm",
+  "description": "Composant IHM du projet Microservices – IUT Aix-Marseille",
+  "require": {
+    "php": ">=8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "app/"
+    }
+  }
 }

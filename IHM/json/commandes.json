@@ -1,0 +1,142 @@
+{
+    "commandes": [
+        {
+            "id": 1,
+            "utilisateurId": 1,
+            "lignes": [
+                {
+                    "menuId": 1,
+                    "quantite": 2
+                }
+            ],
+            "dateCommande": "2026-04-05",
+            "adresseLivraison": "12 rue des Oliviers, Aix-en-Provence",
+            "dateLivraison": "2026-04-10",
+            "prixTotal": 55
+        },
+        {
+            "id": 2,
+            "utilisateurId": 3,
+            "lignes": [
+                {
+                    "menuId": 2,
+                    "quantite": 1
+                },
+                {
+                    "menuId": 3,
+                    "quantite": 1
+                }
+            ],
+            "dateCommande": "2026-04-06",
+            "adresseLivraison": "8 avenue Mirabeau, Aix-en-Provence",
+            "dateLivraison": "2026-04-11",
+            "prixTotal": 62.5
+        },
+        {
+            "id": 3,
+            "utilisateurId": 2,
+            "lignes": [
+                {
+                    "menuId": 4,
+                    "quantite": 3
+                }
+            ],
+            "dateCommande": "2026-04-07",
+            "adresseLivraison": "3 chemin du Moulin, Marseille",
+            "dateLivraison": "2026-04-12",
+            "prixTotal": 105
+        },
+        {
+            "utilisateurId": 4,
+            "lignes": [
+                {
+                    "menuId": 10,
+                    "quantite": 1
+                }
+            ],
+            "dateCommande": "2026-04-09",
+            "adresseLivraison": "12 rue Gaston Berger",
+            "dateLivraison": "2026-04-18",
+            "prixTotal": 14,
+            "id": 4
+        },
+        {
+            "utilisateurId": 5,
+            "lignes": [
+                {
+                    "menuId": 13,
+                    "quantite": 3
+                }
+            ],
+            "dateCommande": "2026-04-09",
+            "adresseLivraison": "12 rue des Lilas",
+            "dateLivraison": "2026-05-08",
+            "prixTotal": 76.5,
+            "id": 5
+        },
+        {
+            "utilisateurId": 6,
+            "lignes": [
+                {
+                    "menuId": 14,
+                    "quantite": 2
+                }
+            ],
+            "dateCommande": "2026-04-09",
+            "adresseLivraison": "Aix en provence",
+            "dateLivraison": "2026-04-10",
+            "prixTotal": 43,
+            "id": 6
+        },
+        {
+          "utilisateurId": 2,
+          "lignes": [
+            {
+              "menuId": 5,
+              "quantite": 2
+            },
+            {
+              "menuId": 7,
+              "quantite": 1
+            }
+          ],
+          "dateCommande": "2026-04-10",
+          "adresseLivraison": "25 rue Paradis, Marseille",
+          "dateLivraison": "2026-04-13",
+          "prixTotal": 68,
+          "id": 7
+        },
+        {
+          "utilisateurId": 1,
+          "lignes": [
+            {
+              "menuId": 8,
+              "quantite": 1
+            },
+            {
+              "menuId": 9,
+              "quantite": 2
+            }
+          ],
+          "dateCommande": "2026-04-10",
+          "adresseLivraison": "5 boulevard Carnot, Aix-en-Provence",
+          "dateLivraison": "2026-04-14",
+          "prixTotal": 72.5,
+          "id": 8
+        },
+        {
+          "utilisateurId": 3,
+          "lignes": [
+            {
+              "menuId": 6,
+              "quantite": 4
+            }
+          ],
+          "dateCommande": "2026-04-11",
+          "adresseLivraison": "18 rue Sainte, Marseille",
+          "dateLivraison": "2026-04-15",
+          "prixTotal": 120,
+          "id": 9
+        }
+    ]
+}
