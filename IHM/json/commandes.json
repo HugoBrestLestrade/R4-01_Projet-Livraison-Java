@@ -87,6 +87,56 @@
             "dateLivraison": "2026-04-10",
             "prixTotal": 43,
             "id": 6
+        },
+        {
+          "utilisateurId": 2,
+          "lignes": [
+            {
+              "menuId": 5,
+              "quantite": 2
+            },
+            {
+              "menuId": 7,
+              "quantite": 1
+            }
+          ],
+          "dateCommande": "2026-04-10",
+          "adresseLivraison": "25 rue Paradis, Marseille",
+          "dateLivraison": "2026-04-13",
+          "prixTotal": 68,
+          "id": 7
+        },
+        {
+          "utilisateurId": 1,
+          "lignes": [
+            {
+              "menuId": 8,
+              "quantite": 1
+            },
+            {
+              "menuId": 9,
+              "quantite": 2
+            }
+          ],
+          "dateCommande": "2026-04-10",
+          "adresseLivraison": "5 boulevard Carnot, Aix-en-Provence",
+          "dateLivraison": "2026-04-14",
+          "prixTotal": 72.5,
+          "id": 8
+        },
+        {
+          "utilisateurId": 3,
+          "lignes": [
+            {
+              "menuId": 6,
+              "quantite": 4
+            }
+          ],
+          "dateCommande": "2026-04-11",
+          "adresseLivraison": "18 rue Sainte, Marseille",
+          "dateLivraison": "2026-04-15",
+          "prixTotal": 120,
+          "id": 9
         }
     ]
 }

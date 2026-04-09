@@ -98,6 +98,39 @@
                 7
             ],
             "id": 14
-        }
+        },
+      {
+        "nom": "Menu Express",
+        "createur": "Laura Bernard",
+        "dateCreation": "2026-04-10",
+        "platsIds": [
+          2,
+          6
+        ],
+        "id": 15
+      },
+      {
+        "nom": "Menu Découverte",
+        "createur": "Thomas Girard",
+        "dateCreation": "2026-04-10",
+        "platsIds": [
+          1,
+          3,
+          4,
+          8
+        ],
+        "id": 16
+      },
+      {
+        "nom": "Menu Épicé",
+        "createur": "Nina Lopez",
+        "dateCreation": "2026-04-10",
+        "platsIds": [
+          5,
+          7,
+          8
+        ],
+        "id": 17
+      }
     ]
 }
